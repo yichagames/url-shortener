@@ -31,7 +31,8 @@ class App(customtkinter.CTk):
             except:
                 pass
             self.result = customtkinter.CTkTextbox(self, height=30, width=300, text_color='white',fg_color='transparent')
-            self.result.insert("0.0","Shortened url: "+ self.Us.shorten(self.entry.get()))
+            self.url = self.Us.shorten(self.entry.get())
+            self.result.insert("0.0","Shortened url: "+ self.url)
             self.result.configure(state='disabled')
             self.result.pack(padx=(70), pady=(10))
             self.redirect = customtkinter.CTkButton(self, text='redirect to the website', font=('', 14), command=lambda: webbrowser.open(self.url))
