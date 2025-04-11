@@ -1,9 +1,12 @@
 import requests
-import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 class generate_link():
     def __init__(self):
-        self.key = '1134f5453068c09b464b7c8f1088668e4a81d'
+        self.key = os.getenv('KEY')
     def shorten(self, link):
         return (self.gen(link))
     def gen(self, link):
@@ -15,3 +18,6 @@ class generate_link():
         data = response.json()  
         print(data)
         return (data['url']['shortLink'])
+
+if __name__ == "__main__":
+    x = generate_link()

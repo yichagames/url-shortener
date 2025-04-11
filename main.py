@@ -15,7 +15,6 @@ class App(customtkinter.CTk):
 
         self.text = customtkinter.CTkLabel(self, text='Url shortener', font=('', 30))
         self.text.pack(fill='x', padx=(10), pady=(30,10))
-        self.us = urlshortener.generate_link()
 
         self.button = customtkinter.CTkButton(self, text='Generate', font=('', 14), command=self.urlCheck)
         self.button.pack(fill='x', padx=(70), pady=(20, 40),side='bottom')
@@ -32,9 +31,7 @@ class App(customtkinter.CTk):
             except:
                 pass
             self.result = customtkinter.CTkTextbox(self, height=30, width=300, text_color='white',fg_color='transparent')
-            #self.Us.shorten(self.entry.get())
-            self.url = 'https://google.com'
-            self.result.insert("0.0","Shortened url: "+ self.url)
+            self.result.insert("0.0","Shortened url: "+ self.Us.shorten(self.entry.get()))
             self.result.configure(state='disabled')
             self.result.pack(padx=(70), pady=(10))
             self.redirect = customtkinter.CTkButton(self, text='redirect to the website', font=('', 14), command=lambda: webbrowser.open(self.url))
@@ -42,6 +39,6 @@ class App(customtkinter.CTk):
             self.geometry("400x320")
         else:
             raise KeyError('Write an url first')
-
-app = App()
-app.mainloop()
+if __name__ == '__main__':
+    app = App()
+    app.mainloop()
